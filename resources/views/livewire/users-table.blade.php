@@ -7,6 +7,13 @@
     <div class="py-3 px-3 bg-white shadow-sm border-bottom">
 
     <h2>Users List</h2>
+    <input
+        wire:model="search"
+        class="form-control"
+        type="text"
+        placeholder="Search"
+    >
+
     <div class="table-responsive">
 
         <table class="table">
@@ -30,7 +37,11 @@
         </tbody>
       </table>
 
-      {!! $users->links() !!}
+      @if ($users->count())
+        {!! $users->links() !!}
+      @else
+          No results for the search {{ $search }}
+      @endif
 </div>
 </div>
     </div>
